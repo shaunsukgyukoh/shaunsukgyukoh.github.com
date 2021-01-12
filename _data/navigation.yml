@@ -1,0 +1,154 @@
+# main links
+main: #  _Pages/ 랑 연계
+  - title: "Posts by Year"
+    url: /posts/
+  - title: "Posts by Category"
+    url: /categories/
+  - title: "Posts by Tag"
+    url: /tags/ 
+  # - title: "Terms &amp; Privacy Policy"
+  #   url: /terms/
+
+# documentation links
+docs:
+  - title: Languages
+    children:
+      - title: "Python 3"
+        url: /docs/python/
+      - title: "C++"
+        url: /docs/cpp/
+      - title: "Java"
+        url: /docs/java/
+      - title: "iOS"
+        url: /docs/ios/
+      - title: "Java Script"
+        url: /docs/javascript/
+      - title: "Type Script"
+        url: /docs/typescript/
+  - title: Tools
+    children:
+      - title: "Spring Boot"
+        url: /docs/springboot/
+      - title: "MongoDB"
+        url: /docs/mongodb/
+      - title: "RESTful"
+        url: /docs/restful/
+      - title: "Kubernetes"
+        url: /docs/kubernetes/
+      - title: "AWS"
+        url: /docs/aws/
+      - title: "GCP"
+        url: /docs/gcp/
+      - title: "Flutter"
+        url: /docs/flutter/
+      - title: "React Native"
+        url: /docs/reactnative/
+      - title: "Swift"
+        url: /docs/swift/
+      - title: "vim"
+        url: /docs/vim/
+      - title: "git"
+        url: /docs/git/
+      - title: "Docker"
+        url: /docs/docker/
+      - title: "Unity"
+        url: /docs/unity/
+      - title: "ROS2"
+        url: /docs/ros2/
+      - title: "Tensor Flow"
+        url: /docs/tensorflow/
+      - title: "Keras"
+        url: /docs/keras/
+      - title: "Node js"
+        url: /docs/nodejs/
+      - title: "React"
+        url: /docs/react/
+  - title: CS Basic
+    children:
+      - title: "OS"
+        url: /docs/os/
+      - title: "Linux"
+        url: /docs/linux/
+      - title: "Network"
+        url: /docs/network/
+      - title: "Security"
+        url: /docs/security/
+  - title: Algo
+    children:
+      - title: "Big O"
+        url: /docs/bigo/
+      - title: "Sort"
+        url: /docs/sort/
+      - title: "BFS / DFS"
+        url: /docs/bfsdfs/
+      - title: "Recursion" 
+        url: /docs/recursion/
+      - title: "DP"
+        url: /docs/dp/
+      - title: "Binary search"
+        url: /docs/bs/
+      - title: "Greedy"
+        url: /docs/greedy/
+      - title: "Graph / Search"
+        url: /docs/graphsearch/
+      - title: "Dijkstra"
+        url: /docs/dijkstra/
+      - title: "Implementation / Simulation"
+        url: /docs/implesim/
+      - title: "Minimum Spanning Tree"
+        url: /docs/mst/
+      - title: "Mathematics"
+        url: /docs/math/
+      - title: "String / Regular Expression"
+        url: /docs/stringre/
+      - title: "Back tracking"
+        url: /docs/backtrack/
+      - title: "Bit masking"
+        url: /docs/bitmasking/
+      - title: "Floyd-Warshall"
+        url: /docs/floydwarshall/
+      - title: "Knuth-Morris-Pratt (KMP)"
+        url: /docs/kmp/
+
+# sidebar navigation list sample
+sidebar-sample:
+  - title: "Parent Page A"
+    children:
+      - title: "Child Page A1"
+        url: /
+      - title: "Child Page A2"
+        url: /
+      - title: "Child Page A3"
+        url: /
+      - title: "Child Page A4"
+        url: /
+  - title: "Parent Page B"
+    children:
+      - title: "Child Page B1"
+        url: /
+      - title: "Child Page B2"
+        url: /
+      - title: "Child Page B3"
+        url: /
+      - title: "Child Page B4"
+        url: /
+      - title: "Child Page B5"
+        url: /
+  - title: "Parent Page C"
+    children:
+      - title: "Child Page C1"
+        url: /
+      - title: "Child Page C2"
+        url: /
+      - title: "Child Page C3"
+        url: /
+      - title: "Child Page C4"
+        url: /
+      - title: "Child Page C5"
+        url: /
+  - title: "Parent Page D"
+    children:
+      - title: "Child Page D1"
+        url: /
+      - title: "Child Page D2"
+        url: /
