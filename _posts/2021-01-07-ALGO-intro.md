@@ -107,9 +107,10 @@ Python calculates about __20,000,000 per sec__.
 ## VS Code setup
 Most of free online IDE such as [repl.it](https://repl.it) are generally open to public. This means that your solutions can be caught as cheating in competetion. (Paid account may have private sessions). Therefore, I will use VS Code for solving problems.  
 In Windows, I/O redirection is not supported. Install WSL2(Windows Subsystem for Linux 2) for I/O redirection support in VS Code. Linux and Mac does not need any optional action.  
-In VS Code, press `cntl + p` or `cmd + p`  and search for _launch.json_ and add __args__ line for I/O redirection.  
+1. Install _Python_ extension.  
+2. In VS Code, press `cntl + p` or `cmd + p`  and search for _launch.json_ and add __args__ line for I/O redirection.  
 launch.json:
-```json
+``` json
 "version": "0.2.0",
     "configurations": [
         {
@@ -123,6 +124,6 @@ launch.json:
     ]
 ```
 Now I/O redirection is activated for your VS Code system.  
-Create __input.txt__ and __output.txt__. Open both files and locate them as shown in the picture. This will allow you to check the output immediately.
+3. Create __input.txt__ and __output.txt__. Open both files and locate them as shown in the picture. This will allow you to check the output immediately.
 
 <img src="/assets/images/algo/algo000.PNG">
