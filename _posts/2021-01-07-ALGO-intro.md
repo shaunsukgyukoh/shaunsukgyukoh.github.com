@@ -62,6 +62,7 @@ published: true
 Depending on input number N, We have to figure out complexity to select correct methods that will satisfy time and memory limit.  
 Python calculates about __20,000,000 per sec__.  
 2^10 ~ 1000 : OK  
+2^20 ~ 1M : OK
 2^30 ~ 10 Billion (1,000,000,000) : TLE
 
 - If time limit : < 1 sec.
