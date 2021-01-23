@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 16: Flutter Package (http) and using API"
+title: "Flutter 17: Flutter Package (http) and using API"
 date: 2021-01-24
 categories:
   - Flutter

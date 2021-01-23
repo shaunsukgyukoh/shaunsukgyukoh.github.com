@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 20: Passing Route Data"
+title: "Flutter 19: Passing Route Data"
 date: 2021-01-24
 categories:
   - Flutter

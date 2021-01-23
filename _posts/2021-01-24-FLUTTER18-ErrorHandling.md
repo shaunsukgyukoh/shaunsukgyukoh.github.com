@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 16: Error Handling"
+title: "Flutter 18: Error Handling"
 date: 2021-01-24
 categories:
   - Flutter
