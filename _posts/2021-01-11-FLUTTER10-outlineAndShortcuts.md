@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 10: Creating Flutter app: Shortcuts and outlines"
+title: "Flutter 10: Shortcuts and outlines"
 date: 2021-01-11
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: Shortcuts and outlines
+## Shortcuts and outlines
 
 
 - If you want to edit widgets (such as swapping two widget), copy and paste is cumbersome.

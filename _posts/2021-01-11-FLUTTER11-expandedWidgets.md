@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 11: Creating Flutter app: Expanded widgets"
+title: "Flutter 11: Expanded widgets"
 date: 2021-01-11
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: Expanded widgets
+## Expanded widgets
 
 - If you want to use as much as space available (leftover) to the widgets, use `Expanded()` widget. Simply use shorcut or outline to wrap a widget and edit the name to `Expanded` will do.
 

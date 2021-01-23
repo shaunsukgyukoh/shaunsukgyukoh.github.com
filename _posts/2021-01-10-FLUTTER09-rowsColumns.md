@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 09: Creating Flutter app: Rows and Columns"
+title: "Flutter 09: Rows and Columns"
 date: 2021-01-10
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: Rows and Columns
+## Rows and Columns
 
 Expand our layout: Create multiple widgets on page at once.
 

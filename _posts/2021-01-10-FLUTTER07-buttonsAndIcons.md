@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 07: Creating Flutter app: Buttons and icons"
+title: "Flutter 07: Buttons and icons"
 date: 2021-01-10
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: Buttons and icons
+## Buttons and icons
 
 #### Icons
 

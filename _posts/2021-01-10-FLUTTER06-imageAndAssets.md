@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 06: Creating Flutter app: Images"
+title: "Flutter 06: Images"
 date: 2021-01-10
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: Images
+## Images
 
 #### Network image
 

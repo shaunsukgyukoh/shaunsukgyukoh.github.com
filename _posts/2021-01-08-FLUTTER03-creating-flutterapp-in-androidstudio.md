@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 03: Creating Flutter app: Android studio setup"
+title: "Flutter 03: Android studio setup"
 date: 2021-01-08
 categories:
   - Flutter

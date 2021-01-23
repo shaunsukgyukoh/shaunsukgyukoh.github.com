@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 04: Creating Flutter app: basic layout"
+title: "Flutter 04: Basic layout"
 date: 2021-01-09
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: basic layout
+## Basic layout
 
 - Putting text in home property via Text widget
 

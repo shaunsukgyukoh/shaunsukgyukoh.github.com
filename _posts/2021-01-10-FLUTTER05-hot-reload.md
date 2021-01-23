@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 05: Creating Flutter app: Hot reload"
+title: "Flutter 05: Hot reload"
 date: 2021-01-08
 categories:
   - Flutter

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Flutter 12: Creating Flutter app: Stateful widgets"
+title: "Flutter 12: Stateful widgets"
 date: 2021-01-22
 categories:
   - Flutter
@@ -22,7 +22,7 @@ meta_keywords: flutter, basic, layout
 published: true
 ---
 
-## Creating Flutter app: Stateful widgets
+## Stateful widgets
 
 - Recall that the stateful widget change the states over time: State obj saves the states.
 
@@ -130,7 +130,6 @@ class _FriendsListsState extends State<FriendsLists> {
   }
 }
 ```
-
   - If you want to associate another property to the lists (such as age, sex, .. ), it is better to create new class rather than declaring Lists for all the additional properties.
 
     - This modularization is also better design as the project gets larger.
