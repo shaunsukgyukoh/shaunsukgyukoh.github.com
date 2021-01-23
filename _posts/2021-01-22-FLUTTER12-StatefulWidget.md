@@ -135,7 +135,7 @@ class _FriendsListsState extends State<FriendsLists> {
 
     - This modularization is also better design as the project gets larger.
     
-    - Make another `.dart` file for new obj class, and add `import 'package:flutter_app_learning_board/friend.dart';` in main.dart
+    - Make another `.dart` file for new obj class in `lib` directory, and add `import 'package:flutter_app_learning_board/friend.dart';` in main.dart
 
     ``` dart
     class Friend {
