@@ -30,6 +30,7 @@ published: true
 #### Shortcuts
 
 - When you click a widget, a lightburb will appear --> This is __Action menu__ for this widget.
+  - shortcut: `alt`+`enter`
 - If the lightbulb does not show up, try to make space (press enter) right above the widget.
 
 <img src="/assets/images/flutter/flutter019.PNG" width="100%" height="100%">

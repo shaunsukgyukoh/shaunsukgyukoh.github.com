@@ -75,7 +75,7 @@ String greeting() {
   return "hello";
 }
 
-// Dart support arrow functions
+// Dart support arrow functions: good for when returning single value in one line
 String greetingArrow() => "helloArrow";
 
 // Class is a blueprint of an object like any other languages
