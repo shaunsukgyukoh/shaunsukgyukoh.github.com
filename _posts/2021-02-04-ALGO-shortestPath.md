@@ -105,7 +105,30 @@ Condition:
 
 src code: [Bellman-Ford](https://github.com/shaunsukgyukoh/TeamNote/blob/main/ShortestPath/bellmanFord.md)
 
-
 ## Traveling Salesman Problem (TSP)
 
-- Travel all nodes only once and return to start node.
+- Travel all nodes only once and return to start node w/ lowest cost.
+  - Hamiltonian Cycle: Find if there exist a tour that visits every city exactly once
+  - TSP: Finding minimum weight Hamiltonian Cycle.
+
+- Naive
+  1. Consider city 1 as the starting and ending point. Since the route is cyclic, we can consider any point as a starting point.
+  2. Generate all (n-1)! permutations of cities.
+  3. Calculate the cost of every permutation and keep track of the minimum cost permutation.
+  4. Return the permutation with minimum cost.
+
+- Using Backtracking
+  1. Consider city 1 as the starting and ending point. Since the route is cyclic, we can consider any point as starting point.
+  2. Start traversing from the source to its adjacent nodes in dfs manner.
+  3. Calculate cost of every traversal and keep track of minimum cost and keep on updating the value of minimum cost stored value.
+  4. Return the permutation with minimum cost.
+
+  src code: [TSP](https://github.com/shaunsukgyukoh/TeamNote/blob/main/ShortestPath/tsp.md)
+
+## Kruskal's algo
+
+## Primm's algo
+
+## DAG (Topological Sort)
+
+- Directed Acyclic Graph
