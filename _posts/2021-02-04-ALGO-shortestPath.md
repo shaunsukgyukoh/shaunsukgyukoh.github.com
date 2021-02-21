@@ -125,9 +125,33 @@ src code: [Bellman-Ford](https://github.com/shaunsukgyukoh/TeamNote/blob/main/Sh
 
   src code: [TSP](https://github.com/shaunsukgyukoh/TeamNote/blob/main/ShortestPath/tsp.md)
 
-## Kruskal's algo
+## Minimum Spanning Tree (MST)
 
-## Primm's algo
+Spanning tree: Partial graph that includes all nodes w/o cycle
+
+||Graph|Tree|
+|-|-|-|
+|Direction|Directed/Undirected|Directed|
+|Cycle|Cyclic/Acyclic|Acyclic|
+|Root node|X|O|
+|nodal relation|none|parent/child
+|model|network|hierchy|
+
+### Kruskal's algo
+
+- GREEDY algo
+- Disjoint: sets w/o any common element (e.g. {1,2,4,6} and {3,5})
+- Union-Find algo: Find root node
+- O(E log E)
+
+- Steps:
+  1. Sort all edges
+  2. Include in set beginning from shortest edge
+      - If cycle occurs, do not include in set
+  3. repeat 2 for all edges.
+
+
+### Primm's algo
 
 ## DAG (Topological Sort)
 
