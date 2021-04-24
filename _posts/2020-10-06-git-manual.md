@@ -10,7 +10,7 @@ published: true
 *이미 설치 된지 확인*
 ```bash
 $ git
-``` 
+```qgu
 
 2. Download git !
 
@@ -29,7 +29,7 @@ w install git
 *(만약 프로젝트마다 다른 이메일 사용하고 싶으면 --global 지워버렷)*
 
 ```bash
-$ git config [--global] user.name “Shaun Koh” 
+$ git config [--global] user.name “Shaun Koh”
 $ git config [--global] user.email email_id@email_domain.com
 ```
 
@@ -131,7 +131,7 @@ $ git add <filename>
 6. Creating version from staging area
 
 ```bash
-$ git commit -m “message 1” 
+$ git commit -m “message 1”
 ```
 
 7. Creating version from staging area with multiple line messages
@@ -143,7 +143,7 @@ $ git commit
 8. Add and create version simultaneously
 
 ```bash
-$ git commit -am “version 2” // untracked files cannot be processed. i.e., new files must be added before at least once with ‘git add ‘ 
+$ git commit -am “version 2” // untracked files cannot be processed. i.e., new files must be added before at least once with ‘git add ‘
 ```
 
 9. Show versions
@@ -235,7 +235,7 @@ MUST BE reverted from top to down ONE BY ONE
 ---
 
 ```bash
-$ git revert <commit_id> 
+$ git revert <commit_id>
 ```
 
 * If u do not want to commit specific file, create “.gitignore” file
@@ -250,7 +250,7 @@ NCH : multiple operation in one repo
 nch list : currently in master
 ```bash
 $ gi
-nch // * master 
+nch // * master
 $ git log --all --graph --oneline // (HEAD -> master) work 3
 ```
 
@@ -269,7 +269,7 @@ nch
 
 ### Merging and handling conflict
 
-* 3 Cases: 
+* 3 Cases:
 1. different files —>add together
 2. same file w/ different part —> merge automatically
 3. same file w/ same part —> CONFLICT
@@ -277,11 +277,11 @@ nch
 
 * base : mutual parent
 
-base 
+base
 nch a — merge commit
 
-  \___ master ___/   
-  
+  \___ master ___/
+
 
 
 * If you want to merge
@@ -305,7 +305,7 @@ nch a
 
 ### 3-way merge
 
-here|base|there|2-way|3-way 
+here|base|there|2-way|3-way
 :---:|:---:|:---:|:---:|:---:
 A|A|A|A|A
 H|B|B|conflict|H
@@ -376,7 +376,7 @@ git add README.md
 git commit -m "first commit"
 git remote add origin https://github.com/kohpaul/self_learn.git
 git push -u origin master
-                
+
 …or push an existing repository from the command line
 git remote add origin https://github.com/kohpaul/self_learn.git
 git push -u origin master
