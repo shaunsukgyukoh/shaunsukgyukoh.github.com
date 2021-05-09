@@ -1,15 +1,15 @@
-minimal_mistakes_skin    : "dark" # 태마 색 설정 "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise" 
+minimal_mistakes_skin    : "dark" # 태마 색 설정 "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
 
 # Site Settings
 locale                   : "ko-KR"
 title                    : "Shaun (Sukgyu) Koh's Learning Blog" # Meta 태그에 들어가는 영역 , masthead_title등이 없으면 기본값으로 나온다.
 title_separator          : "&#124;" # 타이틀 사이 구분자 <title>Welcome to Jekyll | Minimal Mistakes</title> 해당 형식으로 들어갑니다.
-subtitle                 : "Version 1.0" # 타이틀 아래에 나올 작은 글씨 
+subtitle                 : "Version 1.0" # 타이틀 아래에 나올 작은 글씨
 name                     : "Shaun (Sukgyu) Koh" # 맨 하단 이름 찍히는 영역
-description              : "I want to master languages (C++, JAVA, Python), Spring Boot, MongoDB, RESTful, Docker, Kubernetes, AWS, GCP, App dev (Swift, Flutter, React Native), Deep learning (Tensorflow, Keras), and general CS subjects(OS, network, security), and game dev (Unity) " # Meta 태그에 들어가는 영역 
+description              : "I want to master languages (C++, JAVA, Python, Javascript), Spring Boot, MongoDB, RESTful, Docker, Kubernetes, AWS, GCP, App dev (Swift, Flutter, React Native), Deep learning, general CS subjects(OS, network, security), and game dev (Unity) " # Meta 태그에 들어가는 영역
 url                      : "https://shaunsukgyukoh.github.io" # GitBlog 호스트 주소
 baseurl                  : # subPath https://shaunsukgyukoh.github.io/blog라고 하고 싶을 시 "/blog" 라고 적는다.
-repository               : "shaunsukgyukoh/shaunsukgyukoh.github.com" # GitHub username/repo-name  
+repository               : "shaunsukgyukoh/shaunsukgyukoh.github.com" # GitHub username/repo-name
 teaser                   : "/assets/images/me.jpg" # 홈페이지 기본 티져 이미지
 logo                     : # 타이틀 옆에 작게 들어갈 이미지.
 masthead_title           : "Shaun (Sukgyu) Koh's Learning Blog" # 홈페이지 최 상탄에 들어갈 타이틀
@@ -100,8 +100,7 @@ analytics:
 author:
   name             : "Shaun (Sukgyu) Koh"
   avatar           : "https://avatars3.githubusercontent.com/u/5402511?s=400&v=4"
-  bio              : "Received B.E. in Mechanical Engineering in Cornell University and M.S in Interdisciplinary Program of Bioengineering in Seoul National University. Served obligatory military service in Korea Institute of Industrial Technology as professional researcher. Currently, I am working as a S/W engineer specialist in LG Electronics since 2019.
-  "
+  bio              : "Received B.E. in Mechanical Engineering in Cornell University and M.S in Interdisciplinary Program of Bioengineering in Seoul National University. Served obligatory military service in Korea Institute of Industrial Technology as a professional research agent. Worked as a S/W engineer specialist in LG Electronics from 2019 to 2021. Currently, I am working as a head of a R&D Headquarter of MedInTech, Inc."
   location         : "Seoul, South Korea"
   email            : "kohpaul@naver.com"
   links:
@@ -278,7 +277,7 @@ defaults:
       share: true
       related: true
       popular: false
-  
+
   # _pages
   - scope:
       path: "_pages"
