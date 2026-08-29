@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EndoWire AI, Field Service Wiring Assistant</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+body{font-family:Arial,"Noto Sans KR",sans-serif;background:#f8fafc}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:18px;box-shadow:0 8px 30px rgba(15,23,42,.06)}
+label{font-size:12px;font-weight:700;color:#475569}
+select,input[type=number]{width:100%;border:1px solid #cbd5e1;border-radius:8px;padding:8px;background:#fff}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:900px){.grid2{grid-template-columns:1fr}}
+.badge{font-size:11px;padding:3px 8px;border-radius:999px;background:#eff6ff;color:#1d4ed8;font-weight:700}
+</style>
+</head>
+<body>
+<div class="max-w-7xl mx-auto p-4 md:p-8">
+  <section class="card mb-5">
+    <div class="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+      <div>
+        <div class="text-xs uppercase tracking-widest text-blue-600 font-bold">Field Service Decision Support Software</div>
+        <h1 class="text-3xl font-black text-slate-900 mt-1">EndoWire AI</h1>
+        <p class="text-slate-600 mt-2 max-w-3xl">내시경, AI Processing PC, 모니터, Gateway의 가용 포트와 현장 보유 자재를 입력하면 설치 가능한 배선 경로와 준비물 목록을 자동 생성합니다.</p>
+      </div>
+      <div class="text-xs text-slate-500 bg-slate-50 border rounded-xl p-3">
+        <b class="text-slate-700">사용 순서</b><br>
+        1. 장비 포트 선택<br>2. 모니터와 Gateway 구성 선택<br>3. 보유 자재 수량 입력<br>4. 연결도와 BOM 확인
+      </div>
+    </div>
+  </section>
+
+  <div class="grid lg:grid-cols-2 gap-5">
+    <div class="space-y-5">
+      <section class="card">
+        <h2 class="font-black text-lg text-slate-800 mb-4">1. 장비 환경</h2>
+        <div class="grid2">
+          <div><label>내시경 출력</label><select id="endo"><option>HDMI</option><option>DVI</option><option>SDI</option><option>YPbPr</option></select></div>
+          <div><label>AI Processing PC 입력</label><select id="aiin"><option>HDMI</option><option>DVI</option><option>SDI</option></select></div>
+          <div><label>모니터 구성</label><select id="monmode"><option value="1">1대, 원본과 AI 통합</option><option value="2">2대, AI와 원본 분리</option></select></div>
+          <div><label>모니터 1 입력</label><select id="m1"><option>DVI</option><option>HDMI</option><option>DP</option><option>SDI</option></select></div>
+          <div id="m2box" class="hidden"><label>모니터 2 입력</label><select id="m2"><option>DVI</option><option>HDMI</option><option>DP</option><option>SDI</option></select></div>
+          <div><label>단일 모니터 전환</label><select id="switchmode"><option value="switch">외부 스위치</option><option value="dual">모니터 Source 전환</option></select></div>
+        </div>
+        <div class="mt-5 border-t pt-4">
+          <label class="flex items-center gap-2 text-sm"><input id="gw" type="checkbox"> Gateway 사용</label>
+          <div id="gwbox" class="grid2 mt-3 hidden">
+            <div><label>Gateway 소스</label><select id="gwsrc"><option value="ai">AI 영상</option><option value="raw">원본 영상</option></select></div>
+            <div><label>Gateway 입력</label><select id="gwin"><option>DVI</option><option>HDMI</option><option>SDI</option></select></div>
+            <div><label>Gateway 출력</label><select id="gwout"><option>DVI</option><option>HDMI</option><option>DP</option><option>SDI</option></select></div>
+            <div><label>Gateway 모니터 입력</label><select id="gwm"><option>DVI</option><option>HDMI</option><option>DP</option><option>SDI</option></select></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="flex items-center justify-between mb-3"><h2 class="font-black text-lg text-slate-800">2. 보유 자재</h2><span class="badge">Inventory-aware</span></div>
+        <p class="text-xs text-slate-500 mb-4">수량을 0으로 바꾸면 해당 자재를 사용하지 않고 다른 경로를 탐색합니다.</p>
+        <div id="inventory" class="grid2"></div>
+      </section>
+    </div>
+
+    <div class="space-y-5">
+      <section class="card min-h-[560px]">
+        <div class="flex items-center justify-between mb-3"><h2 class="font-black text-lg text-slate-800">실시간 배선 연결도</h2><span class="badge">Constraint routing</span></div>
+        <div id="diagram" class="bg-slate-50 border rounded-xl min-h-[420px] p-3 flex items-center justify-center overflow-auto"></div>
+      </section>
+      <section class="card">
+        <h2 class="font-black text-lg text-slate-800 mb-2">필요 준비물 체크리스트</h2>
+        <p class="text-xs text-slate-500 mb-3">검증된 최종 경로에서 실제 사용되는 자재만 집계합니다.</p>
+        <div id="bom" class="space-y-2"></div>
+      </section>
+    </div>
+  </div>
+
+  <p class="text-center text-xs text-slate-400 mt-6">Portfolio demo, browser-only static application, no patient or clinical data is processed.</p>
+</div>
+
+<script>
+mermaid.initialize({startOnLoad:false,theme:"default"});
+const ITEMS={
+ "SPL_HDMI_1X4":["HDMI splitter 1x4",2],
+ "SPL_HDMI_1X2":["HDMI splitter 1x2",2],
+ "SPL_DVI_1X3":["DVI splitter 1x3",2],
+ "SW_HDMI_2X1":["HDMI switch 2x1",2],
+ "SW_DVI_2X1":["DVI switch 2x1",2],
+ "CVT_HDMI_SDI":["HDMI to SDI converter",2],
+ "CVT_SDI_HDMI":["SDI to HDMI converter",2],
+ "CVT_YPBPR_HDMI":["YPbPr to HDMI converter",1],
+ "CVT_DVI_HDMI":["DVI to HDMI converter",2],
+ "CBL_HDMI_HDMI":["HDMI-HDMI cable",6],
+ "CBL_HDMI_DVI":["HDMI-DVI cable",6],
+ "CBL_DVI_DVI":["DVI-DVI cable",6],
+ "CBL_HDMI_DP":["HDMI-DP cable",3],
+ "CBL_DP_DP":["DP-DP cable",3],
+ "CBL_BNC":["BNC SDI cable",8],
+ "CBL_YPBPR":["Component 3RCA cable",2]
+};
+const inv=document.getElementById("inventory");
+Object.entries(ITEMS).forEach(([k,[n,q]])=>{
+ inv.insertAdjacentHTML("beforeend",`<div><label>${n}</label><input class="trigger" id="i_${k}" type="number" min="0" value="${q}"></div>`);
+});
+function snapshot(stock,bom,edges,nodes,aiOut){return{stock:{...stock},bom:[...bom],edges:[...edges],nodes:new Set(nodes),aiOut:{...aiOut}}}
+function restore(s){return{sStock:{...s.stock},sBom:[...s.bom],sEdges:[...s.edges],sNodes:new Set(s.nodes),sAi:{...s.aiOut}}}
+function calc(){
+ let stock={}; Object.keys(ITEMS).forEach(k=>stock[k]=Math.max(0,parseInt(document.getElementById("i_"+k).value)||0));
+ let bom=[],edges=[],nodes=new Set(),aiOut={HDMI:1,DP:3};
+ const use=k=>{if((stock[k]||0)>0){stock[k]--;bom.push(ITEMS[k][0]);return true}return false};
+ const add=(id,label)=>{nodes.add(id+"|"+label)};
+ const edge=(a,b,label)=>edges.push([a,b,label]);
+ const tryPath=fn=>{
+   const s=snapshot(stock,bom,edges,nodes,aiOut);
+   if(fn())return true;
+   stock=s.stock; bom=s.bom; edges=s.edges; nodes=s.nodes; aiOut=s.aiOut; return false;
+ };
+ function wire(from,to,outp,inp,tag){
+   if(outp===inp){
+     const k=outp==="HDMI"?"CBL_HDMI_HDMI":outp==="DVI"?"CBL_DVI_DVI":outp==="DP"?"CBL_DP_DP":outp==="YPbPr"?"CBL_YPBPR":"CBL_BNC";
+     if(use(k)){edge(from,to,ITEMS[k][0]+"<br>"+tag);return true}
+   }
+   if((outp==="HDMI"&&inp==="DVI")||(outp==="DVI"&&inp==="HDMI")){
+     if(use("CBL_HDMI_DVI")){edge(from,to,ITEMS.CBL_HDMI_DVI[0]+"<br>"+tag);return true}
+     if(outp==="DVI"&&inp==="HDMI"&&use("CBL_DVI_DVI")&&use("CVT_DVI_HDMI")&&use("CBL_HDMI_HDMI")){
+       const c="C"+Math.random().toString(36).slice(2,7);add(c,"DVI to HDMI");edge(from,c,"DVI cable");edge(c,to,"HDMI cable<br>"+tag);return true
+     }
+   }
+   if((outp==="DP"&&inp==="HDMI")||(outp==="HDMI"&&inp==="DP")){
+     if(use("CBL_HDMI_DP")){edge(from,to,"HDMI-DP cable<br>"+tag);return true}
+   }
+   if((outp==="HDMI"||outp==="DVI")&&inp==="SDI"){
+     const pre=outp==="HDMI"?"CBL_HDMI_HDMI":"CBL_HDMI_DVI";
+     if(use(pre)&&use("CVT_HDMI_SDI")&&use("CBL_BNC")){
+       const c="C"+Math.random().toString(36).slice(2,7);add(c,"HDMI to SDI");edge(from,c,ITEMS[pre][0]);edge(c,to,"BNC SDI cable<br>"+tag);return true
+     }
+   }
+   return false
+ }
+ const endo=document.getElementById("endo").value, aiin=document.getElementById("aiin").value;
+ const monmode=document.getElementById("monmode").value, m1=document.getElementById("m1").value, m2=document.getElementById("m2").value;
+ const useGw=document.getElementById("gw").checked, gwsrc=document.getElementById("gwsrc").value, gwin=document.getElementById("gwin").value, gwout=document.getElementById("gwout").value, gwm=document.getElementById("gwm").value;
+ add("E","Endoscopy processor"); add("AI","AI Processing PC");
+ let splitType="HDMI",splitKey=null;
+ if(stock.SPL_HDMI_1X4>0)splitKey="SPL_HDMI_1X4";
+ else if(stock.SPL_HDMI_1X2>0)splitKey="SPL_HDMI_1X2";
+ else if(stock.SPL_DVI_1X3>0){splitType="DVI";splitKey="SPL_DVI_1X3"}
+ if(!splitKey){renderError("사용 가능한 splitter가 없습니다.");return}
+ add("S","Video splitter");
+ let splitOK=false;
+ if(endo===splitType){
+   const k=endo==="HDMI"?"CBL_HDMI_HDMI":"CBL_DVI_DVI";
+   if(use(k)&&use(splitKey)){edge("E","S",ITEMS[k][0]);splitOK=true}
+ }else if(endo==="DVI"&&splitType==="HDMI"&&use("CBL_HDMI_DVI")&&use(splitKey)){edge("E","S","HDMI-DVI cable");splitOK=true}
+ else if(endo==="SDI"&&splitType==="HDMI"&&use("CBL_BNC")&&use("CVT_SDI_HDMI")&&use("CBL_HDMI_HDMI")&&use(splitKey)){add("CIN","SDI to HDMI");edge("E","CIN","BNC SDI cable");edge("CIN","S","HDMI cable");splitOK=true}
+ else if(endo==="YPbPr"&&splitType==="HDMI"&&use("CBL_YPBPR")&&use("CVT_YPBPR_HDMI")&&use("CBL_HDMI_HDMI")&&use(splitKey)){add("CIN","YPbPr to HDMI");edge("E","CIN","Component cable");edge("CIN","S","HDMI cable");splitOK=true}
+ if(!splitOK){renderError("내시경 출력에서 splitter까지 연결할 수 없습니다.");return}
+ let aiOK=wire("S","AI",splitType,aiin,"원본 입력");
+ if(!aiOK){renderError("AI Processing PC 입력 경로를 만들 수 없습니다.");return}
+
+ function aiTo(to,inp,tag){
+   if(aiOut.HDMI>0&&tryPath(()=>wire("AI",to,"HDMI",inp,tag))){aiOut.HDMI--;return true}
+   if(aiOut.DP>0&&tryPath(()=>wire("AI",to,"DP",inp,tag))){aiOut.DP--;return true}
+   return false
+ }
+ if(monmode==="1"){
+   add("M1","Monitor 1");
+   if(document.getElementById("switchmode").value==="switch"){
+     let sw=stock.SW_HDMI_2X1>0?["HDMI","SW_HDMI_2X1"]:stock.SW_DVI_2X1>0?["DVI","SW_DVI_2X1"]:null;
+     if(!sw){renderError("단일 모니터용 video switch가 없습니다.");return}
+     const [typ,key]=sw; use(key); add("SW","Video switch");
+     if(!wire("S","SW",splitType,typ,"원본 우회")||!aiTo("SW",typ,"AI 영상")||!wire("SW","M1",typ,m1,"선택 출력")){renderError("단일 모니터 fail-safe 경로를 만들 수 없습니다.");return}
+   }else{
+     if(!wire("S","M1",splitType,m1,"원본 우회")){renderError("원본 모니터 경로를 만들 수 없습니다.");return}
+     const alt=m1==="HDMI"?"DVI":"HDMI";
+     if(!aiTo("M1",alt,"AI 영상")){renderError("같은 모니터의 두 번째 입력으로 AI 영상을 연결할 수 없습니다.");return}
+   }
+ }else{
+   add("M1","Monitor 1, AI");add("M2","Monitor 2, raw");
+   if(!aiTo("M1",m1,"AI 영상")||!wire("S","M2",splitType,m2,"원본 영상")){renderError("듀얼 모니터 경로를 만들 수 없습니다.");return}
+ }
+ if(useGw){
+   add("GW","Gateway"); add("GWM","Gateway monitor");
+   let ok=gwsrc==="ai"?aiTo("GW",gwin,"Gateway input"):wire("S","GW",splitType,gwin,"Gateway raw input");
+   if(!ok||!wire("GW","GWM",gwout,gwm,"Gateway output")){renderError("Gateway 경로를 만들 수 없습니다.");return}
+ }
+ render(nodes,edges,bom);
+}
+async function render(nodes,edges,bom){
+ let code="flowchart LR\nclassDef err fill:#fee2e2,stroke:#ef4444;\n";
+ nodes.forEach(v=>{const [id,label]=v.split("|");code+=`${id}["${label}"]\n`});
+ edges.forEach(([a,b,l])=>code+=`${a} -- "${l}" --> ${b}\n`);
+ try{const id="g"+Date.now();const out=await mermaid.render(id,code);document.getElementById("diagram").innerHTML=out.svg}catch(e){document.getElementById("diagram").textContent=code}
+ const counts={};bom.forEach(x=>counts[x]=(counts[x]||0)+1);
+ document.getElementById("bom").innerHTML=Object.entries(counts).map(([n,q])=>`<label class="flex items-center justify-between border rounded-xl p-3 bg-slate-50"><span class="flex items-center gap-3"><input type="checkbox" class="w-4 h-4">${n}</span><b class="bg-blue-600 text-white rounded-full px-2 py-1 text-xs">x${q}</b></label>`).join("")||'<p class="text-red-600 font-bold">사용 가능한 자재 경로가 없습니다.</p>';
+}
+async function renderError(msg){
+ document.getElementById("diagram").innerHTML=`<div class="text-center"><div class="text-4xl mb-3">⚠️</div><b class="text-red-600">${msg}</b><p class="text-xs text-slate-500 mt-2">포트 선택 또는 재고 수량을 확인하세요.</p></div>`;
+ document.getElementById("bom").innerHTML='<p class="text-red-600 font-bold">조건에 맞는 설치 구성을 만들지 못했습니다.</p>';
+}
+function vis(){
+ document.getElementById("m2box").classList.toggle("hidden",document.getElementById("monmode").value!=="2");
+ document.getElementById("gwbox").classList.toggle("hidden",!document.getElementById("gw").checked);
+}
+document.addEventListener("input",()=>{vis();calc()});
+document.addEventListener("change",()=>{vis();calc()});
+vis();calc();
+</script>
+</body>
+</html>
