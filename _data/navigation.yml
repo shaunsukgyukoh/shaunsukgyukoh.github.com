@@ -1,5 +1,7 @@
 # main links
 main: #  _Pages/ 랑 연계
+  - title: "Portfolio"
+    url: /portfolio/
   - title: "Posts by Year"
     url: /posts/
   - title: "Posts by Category"
